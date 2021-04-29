@@ -1,0 +1,42 @@
+<div fxLayout  fxLayoutAlign="center" style="margin: 50px 50px;">
+  <mat-card fxLayout="column" class="box" fxFlex="1 1 50%" fxFlex.lt-sm="1 1 auto">
+    <mat-card-title>Register</mat-card-title>
+    <form fxLayout="column" [formGroup] = "registerFormGroup" #registerForm="ngForm" >
+      <mat-form-field>
+        <mat-placeholder>Email</mat-placeholder>
+<!--        <input type="text" matInput [formControl] = "ufc">-->
+        <input type="text" matInput formControlName="username" ngModel name="username">
+        <mat-error *ngIf="registerFormGroup.get('username')?.getError('required')">Email is required!</mat-error>
+        <mat-error *ngIf="registerFormGroup.get('username')?.getError('email')">Email is invalid!</mat-error>
+        <mat-error #usernameCheck [hidden]=true>Email is already registered!</mat-error>
+      </mat-form-field>
+      <div fxLayout="column" formGroupName="passwordGroup">
+        <mat-form-field>
+          <mat-placeholder>Password</mat-placeholder>
+<!--          <input type="password" matInput [formControl] = "pfc">-->
+          <input [type]="hide ? 'password' : 'text'" matInput formControlName="password" ngModel name="username">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-error *ngIf="registerFormGroup.get('passwordGroup')?.get('password')?.getError('minlength')">
+          Password should be longer than 8 characters!
+        </mat-error>
+        <mat-form-field>
+          <mat-placeholder>Confirm Password</mat-placeholder>
+<!--          <input type="password" matInput [formControl] = "cpfc">-->
+          <input [type]="hide ? 'password' : 'text'" matInput formControlName="confirmPassword">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-error *ngIf="registerFormGroup.get('passwordGroup')?.getError('passwordNotMatch')">
+          {{registerFormGroup.get('passwordGroup')?.getError('passwordNotMatch')}}
+        </mat-error>
+      </div>
+      <p>
+        <button type="submit" [disabled]="registerFormGroup.invalid" mat-raised-button color="primary" (click)="register(registerForm)">Register</button>
+      </p>
+    </form>
+  </mat-card>
+</div>

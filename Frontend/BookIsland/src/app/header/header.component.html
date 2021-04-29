@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-sm navbar-light navbar-float">
+  <img src="favicon.ico" style="max-width: 55px;background: none; cursor: pointer" routerLink="/home">
+  <a class="bookend-text" routerLink="/home">BookIsland</a>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a *ngIf="!auth.user; else logoutTemplate" class="nav-link ml-auto" routerLink="/login" routerLinkActive="active"Products>Login</a>
+        <ng-template #logoutTemplate>
+          <ul class="nav-link ml-auto userinfo" fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+            <button mat-button class="nav-link ml-auto userinfo" [matMenuTriggerFor]="menu">{{auth.user?.username}}</button>
+            <mat-menu #menu="matMenu" >
+              <button mat-menu-item style="width: 150px" routerLink="/account">Account</button>
+              <button mat-menu-item style="width: 150px" routerLink="/checkOrders">Orders</button>
+              <button mat-menu-item style="width: 150px" routerLink="/admin" *ngIf="auth.user?.role==='ROLE_ADMIN'">Admin</button>
+              <button mat-menu-item style="width: 150px" routerLink="/logout" (click)="logout()">Sign Out</button>
+            </mat-menu>
+          </ul>
+          <div class="example-button-container">
+            <button mat-mini-fab routerLink="/cart" aria-label="Example icon button with a home icon">
+              <mat-icon>shopping_cart</mat-icon>
+            </button>
+          </div>
+        </ng-template>
+      </li>
+    </ul>
+  </div>
+</nav>
+

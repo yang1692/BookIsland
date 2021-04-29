@@ -1,0 +1,21 @@
+.status-text{
+  font-weight: bolder;
+  font-size: 20px;
+}
+.on-delivery-text{
+  color: green;
+}
+.delivered-text{
+  color: black;
+}
+.cancelled-text{
+  color: red;
+}
+a{
+  cursor: pointer;
+}
+.search-orders{
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}

@@ -1,0 +1,35 @@
+<mat-card>
+  <h2>Shopping Cart</h2>
+</mat-card>
+<div *ngFor="let c of auth.user?.shoppingCart; let index = index;trackBy:trackByIndex;">
+  <mat-card fxLayout fxLayoutAlign="row" *ngIf="c.quantity > 0">
+    <div class="col-sm-3">
+      <input type="checkbox"
+             [checked]="c.checked === 1"
+             (click)="updateSubtotal(index)"
+             class="select-item-checkbox">
+      <img style="cursor: pointer" [routerLink]="['/book-detail', c.book?.id]" src="{{c.book?.image}}">
+    </div>
+    <div class="col-sm-3" fxLayout="column" fxFlex="1 1 50%">
+      <div class="item-name">{{c.book?.name}}</div>
+      <div class="item-author">{{c.book?.author}}</div>
+      <div class="item-instock">There are currently {{c.book?.sales_in_stock}} in stock(more on the way).</div>
+      <div class="item-price">${{c.book?.sale_price}}</div>
+    </div>
+    <div class="col-sm-3">
+      <div fxLayout="column" fxFlex="1 1 50%">
+        <div class="item-price">Price: ${{(c.book.sale_price * c.quantity).toFixed(2)}}</div>
+        <div class="item-quantity">
+          Quantity:<input type="number" id="number" min="1" [(ngModel)]="c.quantity" (click)="test(index)"/>
+          | <button class="btn delete-button" (click)="deleteItem(c)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+<mat-card class="place-order-container" >
+  Subtotal: ${{cs.subtotal.toFixed(2)}}
+</mat-card>
+<mat-card  class="place-order-container" >
+  <button mat-button color="accent" [disabled]="cs.subtotal<=0" routerLink="/checkout">Check Out</button>
+</mat-card>

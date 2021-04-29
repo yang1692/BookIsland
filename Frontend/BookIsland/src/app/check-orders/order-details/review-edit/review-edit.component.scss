@@ -1,0 +1,21 @@
+.review-edit-book-image{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-height: 80px;
+}
+.review-edit-book-name{
+  text-align: center;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: bolder;
+}
+.review-edit-book-review{
+  height: 200px;
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  //border: 2px solid black;
+  resize: none;
+}

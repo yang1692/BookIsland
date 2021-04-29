@@ -1,0 +1,32 @@
+<div fxLayout fxLayoutAlign="center" style="margin: 50px 50px;">
+  <mat-card class="box" fxLayout="column" fxFlex="1 1 50%" fxFlex.lt-sm="1 1 auto">
+    <mat-card-title>Address</mat-card-title>
+    <form fxLayout="column" #editAddressForm="ngForm" (ngSubmit)="updateAddress(editAddressForm)">
+      <mat-form-field>
+        <input matInput  type="text" placeholder="Name" ngModel name="receiverName" required [(ngModel)]="data.receiver_name">
+        <mat-error>Name is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="tel" placeholder="Phone" required  minlength="10" maxlength="10" ngModel name="phone" [(ngModel)]="data.phone">
+        <mat-error>Phone has to be  10 characters long!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               type="text"
+               placeholder="Address"
+               required
+               ngModel
+               name="address"
+               matGoogleMapsAutocomplete
+               [types]="[]"
+               country="US"
+        >
+        <mat-error>Address is required!</mat-error>
+      </mat-form-field>
+      <div>
+        <button  mat-raised-button color="primary" type="submit">Submit</button>
+      </div>
+    </form>
+  </mat-card>
+
+</div>

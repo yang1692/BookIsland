@@ -1,0 +1,26 @@
+<mat-card>
+  <h2>Order Details</h2>
+</mat-card>
+<div *ngFor="let o of order.purchases; let index = index;trackBy:trackByIndex;">
+  <mat-card  fxLayout fxLayoutAlign="row" class="order-container">
+    <div class="col-sm-3" fxLayout="column" fxFlex="1 1 50%">
+      <div>
+        <img class="book-image" [src]="o.book.image" [routerLink]="['/book-detail', o.book.id]">
+        <div>Quantity: {{o.quantity}}</div>
+      </div>
+    </div>
+    <div class="col-sm-3" fxLayout="column" fxFlex="1 1 50%">
+      <div>
+        <div class="book-name-text">{{o.book.name}}</div>
+        <div class="book-author-text">By <a [routerLink]="['/author',o.book.author]">{{o.book.author}}</a></div>
+        <div>Price: ${{o.book.sale_price}}</div>
+      </div>
+    </div>
+    <div class="col-sm-3" *ngIf="order.status===2 && o.reviewed == 0">
+      <a mat-button (click)="openEditReviewDialog(index)">Add Review</a>
+    </div>
+    <div class="col-sm-3" *ngIf="order.status===2 && o.reviewed == 1">
+      <a mat-button disabled> Reviewed</a>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,26 @@
+<div class="search-orders">
+  <label>Search By Order ID:</label>
+  <input  type="text" [(ngModel)]="filter">
+
+</div>
+<mat-card>
+  <h2>Orders</h2>
+</mat-card>
+<div *ngFor="let o of orders|orderFilter:filter; let index = index;trackBy:trackByIndex;">
+  <mat-card  fxLayout fxLayoutAlign="row" class="order-container">
+    <div class="col-sm-3" fxLayout="column" fxFlex="1 1 50%">
+      <div class="order-receiver-info">ID: {{o.id}}</div>
+      <div class="order-receiver-info">Receiver: {{o.name}}  Phone: {{o.phone}}</div>
+      <div class="order-address">{{o.address}}</div>
+      <div class="order-date">Order Date:{{o.order_date.toString().substr(0,10)}}</div>
+      <div class="order-subtotal">Subtotal: {{o.subtotal}} </div>
+    </div>
+    <div class="col-sm-3" fxLayout="row" >
+      <img style="max-height: 80px" [routerLink]="['/order-detail', o.id]" *ngFor="let od of o.purchases" [src]="od.book.image" >
+    </div>
+    <div class="col-sm-3" fxLayout="column" fxFlex="1 1 50%"   >
+      <div class="status-text" [ngClass]="[status[o.status].class]">{{status[o.status].status}}</div>
+      <a *ngIf="o.status === 0" (click)="deliveredOrder(o.id)">Deliver order</a>
+    </div>
+  </mat-card>
+</div>

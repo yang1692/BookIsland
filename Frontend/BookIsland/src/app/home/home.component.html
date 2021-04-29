@@ -1,0 +1,16 @@
+<div  style="margin: 20px 200px;">
+<h1 style="margin-left: 100px">Hottest Books of All Time</h1>
+  <div class="div-container">
+    <app-book-overview *ngFor="let b of (this.bs.books|bookSorter|slice: lowValue : highValue)" [book]="b"></app-book-overview>
+  </div>
+  <div>
+    <mat-paginator class="paginator" [length]="bs.books.length"
+                   [pageSize]="8"
+                   (page)="getPaginatorData($event)"
+                   [pageSizeOptions]="[1, 8]"
+                   showFirstLastButtons="false">
+    </mat-paginator>
+  </div>
+
+</div>
+

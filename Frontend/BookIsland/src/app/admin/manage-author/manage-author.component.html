@@ -1,0 +1,23 @@
+<div fxLayout fxLayoutAlign="center" style="margin: 50px 50px;">
+  <mat-card class="box" fxLayout="column" fxFlex="1 1 50%" fxFlex.lt-sm="1 1 auto">
+    <mat-card-title>Manage Author</mat-card-title>
+    <form fxLayout="column" #manageAuthorForm="ngForm" (ngSubmit)="manageAuthor(manageAuthorForm)">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Author Name"[(ngModel)]="author.name" ngModel name="name" required>
+        <mat-error>Author name is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Image Url"[(ngModel)]="author.image" ngModel name="image" required>
+        <mat-error>Image Url is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput type="number" maxlength="500" placeholder="Description"[(ngModel)]="author.description" ngModel name="description" required></textarea>
+        <mat-error>Description is required!</mat-error>
+      </mat-form-field>
+      <div>
+        <button [disabled]="manageAuthorForm.invalid" mat-raised-button color="primary" type="submit">Add</button>
+      </div>
+    </form>
+  </mat-card>
+
+</div>

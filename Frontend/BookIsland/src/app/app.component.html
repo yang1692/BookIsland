@@ -1,0 +1,17 @@
+  <app-header></app-header>
+  <app-second-header></app-second-header>
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav  class="side-options-container"
+                  [opened]="!invalidUrls.includes(router.url) && !re.test(router.url)"
+                  mode="side">
+      <div fxLayout="column" style="border: none">
+        <button mat-menu-item *ngFor="let t of types"  [routerLink]="['./books/',t.name]" routerLinkActive="active" class="sidenav-button">
+          <mat-icon>{{t.icon}}</mat-icon>
+          <span>{{t.name}}</span>
+        </button>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

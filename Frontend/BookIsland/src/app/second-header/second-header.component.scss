@@ -1,0 +1,40 @@
+
+nav{
+  background-color: white;
+  opacity: 0.5;
+  background-image: url("https://nipponcolors.com/images/texture.png");
+  width: 100%;
+
+}
+.nav-options-container{
+  display: flex;
+  justify-content: center;
+
+  min-width: 480px;
+}
+nav:hover{
+  background-color: white;
+  opacity: 0.7;
+}
+input{
+  border: 2px solid gray;
+  min-width: 300px;
+  :focus{
+    background: white;
+    border: none;
+  }
+}
+.outer-container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-button{
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: bolder;
+}
+.nav-icon{
+  width: 120px;
+}

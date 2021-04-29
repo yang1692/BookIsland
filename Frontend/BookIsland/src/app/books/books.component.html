@@ -1,0 +1,16 @@
+<div  style="margin: 20px 200px;">
+
+  <div class="div-container">
+    <app-book-overview *ngFor="let b of (this.bs.books|bookFilter:filter|slice: lowValue : highValue)" [book]="b"></app-book-overview>
+  </div>
+  <div>
+    <mat-paginator #paginator class="paginator" [length]="(bs.books|bookFilter:filter).length"
+                   [pageSize]="8"
+                   (page)="getPaginatorData($event)"
+                   [pageSizeOptions]="[1, 8]"
+                   showFirstLastButtons="false">
+    </mat-paginator>
+  </div>
+
+</div>
+

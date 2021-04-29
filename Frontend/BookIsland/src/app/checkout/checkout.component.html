@@ -1,0 +1,54 @@
+<mat-vertical-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Choose a shipping address</ng-template>
+        <mat-card>
+            <mat-radio-group   required>
+              <div class="stepper-list-title">Your address</div>
+              <hr>
+              <div *ngFor="let a of auth.user?.addresses; let index = index;trackBy:trackByIndex;">
+                <input type="radio"  formControlName="firstCtrl" value="{{index}}">
+                  <span class="radio-selector-description">{{a.receiver_name}}, {{a.address}}, {{a.state}}, {{a.zip}}</span>
+                  <a mat-button class="edit-button" color="primary" (click)="openEditDialog(index)">Edit address </a>
+              </div>
+              <a mat-button class="edit-button" matStepperNext color="primary" (click)="openAddDialog()"><mat-icon >add</mat-icon>Add a new address</a>
+            </mat-radio-group>
+          <hr>
+          <button mat-button  matStepperNext class="button-primary">Use this Address</button>
+        </mat-card>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Choose a payment method</ng-template>
+      <mat-radio-group required>
+        <div class="stepper-list-title">Your payment method</div>
+        <hr>
+        <div>
+          <input type="radio" formControlName="secondCtrl" class="radio-selector" value="0000000000000000">
+          <img [src]="visaUrl">  <span class="radio-selector-description">Visa ending in 0000</span>
+        </div>
+        <hr>
+      </mat-radio-group>
+      <div>
+        <button mat-button class="button-primary" matStepperNext>Use this payment method</button>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>Order total: {{cs.subtotal}}$</p>
+    <div>
+      <button mat-button class="button-primary" (click)="placeOrder()">Place Order</button>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+
+
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
+
+
+
+

@@ -1,0 +1,86 @@
+<button *ngIf="auth.user?.role==='ROLE_ADMIN'" mat-button color="primary" [routerLink]="['/admin/manageBook',book.id]">Edit Book</button>
+<div class="container-fluid">
+  <div *ngIf="book" class="row book-detail-container">
+    <div class="col-sm-3">
+      <div class="book-detail-image-container text-center">
+        <img src="{{book.image}}" class="book-detail-image">
+      </div>
+    </div>
+    <div class="col-sm-3 book-detail-info-container">
+      <div class="book-detail-info">
+        <div><h1>{{book.name}}</h1></div>
+        <div class="book-detail-info-author">
+          by <a href="" [routerLink]="['/author',book.author]">{{book.author}}</a>
+          <app-star-rating [selectedRating]="rate" [rateable]="false"></app-star-rating>
+        </div>
+        <mat-radio-group  fxLayout="column" [(ngModel)]="option">
+          <mat-card class="book-detail-info-price">
+            <mat-radio-button [checked]="true" [value]=0 fxLayout="column">
+                <p class="option-text">Buy a new one</p>
+                <p class="option-price">${{book.sale_price}}</p>
+            </mat-radio-button>
+          </mat-card>
+          <mat-card class="book-detail-info-price" fxLayout="column">
+            <mat-radio-button  [value]=1 >
+                <p class="option-text">Rent an used one</p>
+                <p class="option-price">${{book.rent_price}} / day</p>
+            </mat-radio-button>
+          </mat-card>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div class="col-sm-3 order-detail-container">
+      <div class="order-detail-container-description" *ngIf="option===0; else option2Template" >
+        <p>Buy new:${{(book.sale_price*quantity).toFixed(2)}}</p>
+        <div class="stock_info_div" *ngIf="book.sales_in_stock > 10 else lowStock">There are {{book.sales_in_stock}} in stock</div>
+        <ng-template #lowStock>
+          <div class="low_stock_info_div">There are only {{book.sales_in_stock}} in stock</div>
+        </ng-template>
+        <div class="qty-manager-div">
+          <div class="value-button" id="decrease" (click)="decreaseQty()" value="Decrease Value">-</div>
+          <input (keyup)="checkQty()" type="number" id="number" [value]="book.sales_in_stock > 0 ? 1 : 0" [(ngModel)]="quantity"/>
+          <div class="value-button" id="increase" (click)="increaseQty()" value="Increase Value">+</div>
+          <button (click)="addToCart()" [disabled]="book.sales_in_stock === 0" class="add-to-cart-btn" mat-raised-button color="primary">Add to cart</button>
+        </div>
+      </div>
+      <ng-template #option2Template>
+        <div class="order-detail-container-description">Rent an userd one:${{book.rent_price}}/day </div>
+      </ng-template>
+
+    </div>
+  </div>
+  <hr style="margin-top: 20px">
+  <div>
+    <h1>Product Details</h1>
+    <h4>Publisher:{{book!.publisher}}</h4>
+    <h4>Language:{{book!.language}}</h4>
+    <h4>ISBN:{{book!.isbn}}</h4>
+    <h4>Item Weight:{{book!.weight}}</h4>
+    <h4>Dimension:{{book!.length}} x {{book!.width}} x {{book!.height}} inches</h4>
+  </div>
+  <hr style="margin-top: 20px">
+  <h1>Reviews</h1>
+  <div *ngIf="reviews.length > 0">
+    <div class="review-container" *ngFor="let r of reviews|slice: lowValue : highValue">
+      <mat-card >
+        <p class="review-content">{{r.review}}</p>
+          <app-star-rating style="max-width: 20px" [selectedRating]="r.rate" [rateable]="false"></app-star-rating>
+          <div class="reviewer-info">
+            from {{r.username}} at {{r.review_date.toString().substr(0,10)}}
+          </div>
+      </mat-card>
+      <hr style="margin-top: 20px">
+    </div>
+    <div>
+      <mat-paginator class="paginator" [length]="reviews.length"
+                     [pageSize]="8"
+                     (page)="getPaginatorData($event)"
+                     [pageSizeOptions]="[1, 8]"
+                     showFirstLastButtons="false">
+      </mat-paginator>
+    </div>
+  </div>
+  <div *ngIf="reviews.length === 0">
+    There are currently no comments
+  </div>
+</div>

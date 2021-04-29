@@ -1,0 +1,13 @@
+<div>
+  <img  class="review-edit-book-image" [src]="data.book.image" alt="">
+  <div class="review-edit-book-name">{{data.book.name}}</div>
+</div>
+<form fxLayout="column" #loginForm="ngForm">
+  Rate:<app-star-rating [rateable]="true" [selectedRating]="5" (em)="childDataHandler($event)"></app-star-rating>
+  <mat-form-field appearance="outline">
+    <textarea matInput placeholder="Review" class="review-edit-book-review" type="text" minlength="1" maxlength="200"  ngModel name="review"></textarea>
+    <mat-error>Review must be longer than 1 character!</mat-error>
+  </mat-form-field>
+  <button mat-button type="submit" (click)="updateReview(loginForm)" [disabled]="loginForm.invalid">Submit</button>
+</form>
+

@@ -1,0 +1,40 @@
+ul, li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.bookend-text{
+  font-family: "Times New Roman";
+  font-size: 30px;
+}
+.menu {
+  height: 30px;
+  padding: 0 10px;
+  li {
+    display: inline-block;
+    width: 100px;
+    line-height: 30px;
+  }
+}
+nav{
+  background-color: #BFA626;
+  background-image: url("https://nipponcolors.com/images/texture.png");;
+  a{
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+  }
+}
+
+.userinfo{
+  font-weight: bolder;
+  font-size: 15px;
+  opacity: 1;
+}
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  cursor: pointer;
+}
+

@@ -1,0 +1,56 @@
+img {
+  margin-left: 20px;
+  max-width: 200px;
+  max-height: 160px;
+  text-align: center;
+}
+.select-item-checkbox{
+  border-radius: 5px;
+}
+#decrease {
+  margin-right: -4px;
+  border-radius: 8px 0 0 8px;
+  font-weight: bolder;
+}
+
+#increase {
+  margin-left: -4px;
+  border-radius: 0 8px 8px 0;
+  font-weight: bolder;
+}
+
+input#number {
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 10px;
+  width: 40px;
+  height: 20px;
+  background: none;
+  font-weight: bolder;
+  font-family: "Calibri Light";
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+.item-quantity{
+  position: absolute;
+  bottom: 20px;
+}
+.item-author{
+  font-family: "Apple Color Emoji";
+  font-style: italic;
+}
+.item-name{
+  font-family: Cambria;
+  font-weight: bolder;
+  font-size: 30px;
+}
+.item-price{
+  font-family: "Comic Sans MS";
+  font-size: 20px;
+}
+.place-order-container{
+  text-align: center;
+}

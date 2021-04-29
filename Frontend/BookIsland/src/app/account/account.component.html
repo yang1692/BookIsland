@@ -1,0 +1,14 @@
+<div class="info-container" fxLayout="column" fxFlex="1 1 70%" fxFlex.lt-sm="1 1 auto">
+  <mat-card>
+    <p>Email: {{auth.user?.username}}</p>
+  </mat-card>
+  <mat-card>
+    <div *ngFor="let a of auth.user?.addresses; let index = index;trackBy:trackByIndex;">
+      {{a.receiver_name}}, {{a.address}}
+      <a mat-button class="edit-button" color="primary" (click)="openEditDialog(index)">Edit</a>
+      <a mat-button class="edit-button" color="primary" (click)="deleteAddress(a.id)">Delete</a>
+    </div>
+    <a mat-button class="edit-button" color="primary" (click)="openAddDialog()"><mat-icon >add</mat-icon>Add a new address</a>
+
+  </mat-card>
+</div>

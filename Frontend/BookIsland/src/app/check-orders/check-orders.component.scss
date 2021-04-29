@@ -1,0 +1,26 @@
+.order-receiver-info{
+  font-family: Arial;
+  font-weight: bold;
+}
+.order-address{
+  font-style: italic;
+}
+.order-subtotal{
+  font-weight: bolder;
+}
+.status-text{
+  font-weight: bolder;
+  font-size: 20px;
+}
+.on-delivery-text{
+  color: green;
+}
+.delivered-text{
+  color: black;
+}
+.cancelled-text{
+  color: red;
+}
+a, img{
+  cursor: pointer;
+}

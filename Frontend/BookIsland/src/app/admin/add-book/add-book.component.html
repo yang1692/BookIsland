@@ -1,0 +1,74 @@
+<div fxLayout fxLayoutAlign="center" style="margin: 50px 50px;">
+  <mat-card class="box" fxLayout="column" fxFlex="1 1 50%" fxFlex.lt-sm="1 1 auto">
+    <mat-card-title>Manage Book</mat-card-title>
+    <form fxLayout="column" #addBookForm="ngForm" (ngSubmit)="addBook(addBookForm)">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Book Name" maxlength="100" [(ngModel)]="book.name" ngModel name="name" required>
+        <mat-error>Book name is required and cannot execeed 100 characters long!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Image Url"[(ngModel)]="book.image" ngModel name="image" required>
+        <mat-error>Image Url is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Sale Price"[(ngModel)]="book.sale_price" ngModel name="sale_price" required>
+        <mat-error>Sale Price is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Rent Price per day"[(ngModel)]="book.rent_price" ngModel name="rent_price">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Language</mat-label>
+        <mat-select ngModel name="language"[(ngModel)]="book.language" required>
+          <mat-option *ngFor="let l of langs" [value]="l">
+            {{l}}
+          </mat-option>
+        </mat-select>
+        <mat-error>Language is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Publisher"[(ngModel)]="book.publisher" ngModel name="publisher" required>
+        <mat-error>Publisher is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Author"[(ngModel)]="book.author" ngModel name="author" required>
+        <mat-error>Author is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Type</mat-label>
+        <mat-select ngModel [(ngModel)]="book.type" name="type" required>
+          <mat-option *ngFor="let t of types" [value]="t.name">
+            {{t.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>Type is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Isbn"[(ngModel)]="book.isbn" ngModel name="isbn" required>
+        <mat-error>ISBN Price is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Weight"[(ngModel)]="book.weight" ngModel name="weight">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Sales In Stock"[(ngModel)]="book.sales_in_stock" ngModel name="sales_in_stock">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Rent In Stock"[(ngModel)]="book.rent_in_stock" ngModel name="rent_in_stock">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Length"[(ngModel)]="book.length" ngModel name="length">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Width"[(ngModel)]="book.width" ngModel name="width">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Height"[(ngModel)]="book.height" ngModel name="height">
+      </mat-form-field>
+      <div>
+        <button [disabled]="addBookForm.invalid" mat-raised-button color="primary" type="submit">Save</button>
+      </div>
+    </form>
+  </mat-card>
+
+</div>

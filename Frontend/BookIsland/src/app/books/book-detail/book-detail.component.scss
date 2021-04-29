@@ -1,0 +1,156 @@
+h1{
+  font-family: DialogInput;
+  font-weight: bolder;
+}
+.book-detail-image{
+  max-width: 500px;
+  max-height: 350px;
+  text-align: center;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+.book-detail-info{
+  max-width: 500px;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+.book-detail-info-author{
+  border-bottom: 2px;
+  font-style: italic;
+}
+mat-radio-group{
+  margin-top: 20px;
+}
+.book-detail-info-price{
+  margin-top: 10px;
+}
+.option-price{
+  color: darkgray;
+  font-family: Cambria;
+}
+.option-text{
+  color: black;
+  font-weight: bold;
+  font-family: "Leelawadee UI";
+}
+.book-detail-info-price{
+  margin-top: 5px;
+  max-height: 90px;
+  max-width: 200px;
+
+}
+.order-detail-container{
+  border: 2px solid black;
+  border-radius: 20px;
+  background: white;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+.order-detail-container-description{
+  margin-top: 20px;
+  p{
+    font-weight: bold;
+    font-size: 30px;
+    color: black;
+    font-family: "Comic Sans MS";
+  }
+
+}
+.qty-manager-div {
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.value-button {
+  display: inline-block;
+  border: 1px solid #ddd;
+  margin: 0px;
+  width: 20px;
+  line-height: 5px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 11px 0;
+  background: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.value-button:hover {
+  cursor: pointer;
+}
+
+#decrease {
+  margin-right: -4px;
+  border-radius: 8px 0 0 8px;
+  font-weight: bolder;
+}
+
+#increase {
+  margin-left: -4px;
+  border-radius: 0 8px 8px 0;
+  font-weight: bolder;
+}
+
+
+input#number {
+  text-align: center;
+  border: none;
+  margin: 0px;
+  width: 40px;
+  height: 20px;
+  background: none;
+  font-weight: bolder;
+  font-family: "Calibri Light";
+}
+input#number:focus{
+  outline: none;
+}
+.add-to-cart-btn{
+  margin-left: 20px;
+  background-color: black;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.stock_info_div{
+  font-family: "Javanese Text";
+  margin-top: 20px;
+  font-style: italic;
+  color: grey;
+}
+.low_stock_info_div{
+  margin-top: 20px;
+  font-family: "Javanese Text";
+  font-weight: bold;
+  font-style: italic;
+  color: red;
+}
+.review-container{
+  opacity: 0.8;
+  border-radius: 0;
+}
+.review-content{
+  font-weight: bolder;
+  font-family: "Apple Color Emoji";
+}
+.reviewer-info{
+  text-align: right;
+  font-style: italic;
+}
+.paginator{
+  background: none;
+  font-weight: bolder;
+  font-size: 15px;
+  font-family: "Nirmala UI";
+}

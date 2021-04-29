@@ -1,0 +1,20 @@
+<div fxLayout fxLayoutAlign="center" style="margin: 50px 50px;">
+  <mat-card class="box" fxLayout="column" fxFlex="1 1 50%" fxFlex.lt-sm="1 1 auto">
+    <mat-card-title>Login</mat-card-title>
+    <form fxLayout="column" #loginForm="ngForm" (ngSubmit)="submit(loginForm)">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Username" ngModel name="username" required>
+        <mat-error>Username is required!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" required minlength="6" ngModel name="password">
+        <mat-error>Password has to be no less than 6 characters long!</mat-error>
+      </mat-form-field>
+      <div>
+        <button [disabled]="loginForm.invalid" mat-raised-button color="primary" type="submit">Login</button>
+        <a mat-button color="accent" routerLink="/register">Register</a>
+      </div>
+    </form>
+  </mat-card>
+
+</div>

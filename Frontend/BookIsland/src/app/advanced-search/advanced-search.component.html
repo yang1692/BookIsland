@@ -1,0 +1,29 @@
+<div fxLayout fxLayoutAlign="center" style="margin: 50px 50px;">
+  <mat-card class="box" fxLayout="column" fxFlex="1 1 50%" fxFlex.lt-sm="1 1 auto">
+    <mat-card-title>Advanced Search</mat-card-title>
+    <form fxLayout="column" #advancedSearchForm="ngForm" (ngSubmit)="advancedSearch(advancedSearchForm)">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Name" ngModel name="name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Type" ngModel name="type">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Isbn" ngModel name="isbn">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Language" ngModel name="language">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Author" ngModel name="author">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Publisher" ngModel name="publisher">
+      </mat-form-field>
+      <div>
+        <button [disabled]="advancedSearchForm.invalid" mat-raised-button color="primary" type="submit">Search</button>
+      </div>
+    </form>
+  </mat-card>
+
+</div>
